@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import {LoginForm} from 'components';
 
-export default class LoginPage extends Component {
+export default class CopyRight extends Component {
   constructor(props, context) {
     super(props, context);
   }
 
   render() {
     return (
-      <LoginForm/>
+      <div className="copy-right">
+        © 2017 enigma Co.,LTD | 日本語
+      </div>
     );
   }
 }

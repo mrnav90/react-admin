@@ -35,6 +35,7 @@
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.0",
+    "stylelint-config-standard": "^17.0.0",
     "universal-cookie": "^2.1.0",
     "validator": "^9.1.2"
   },
@@ -68,7 +69,6 @@
     "sass-lint": "^1.10.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "stylelint-config-standard": "^18.0.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.6",
     "webpack-dev-middleware": "^1.10.0",

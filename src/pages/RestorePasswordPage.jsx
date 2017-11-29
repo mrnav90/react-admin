@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {LoginForm} from 'components';
+import {RestorePasswordForm} from 'components';
 
-export default class LoginPage extends Component {
+export default class RestorePasswordPage extends Component {
   constructor(props, context) {
     super(props, context);
   }
 
   render() {
     return (
-      <LoginForm/>
+      <RestorePasswordForm/>
     );
   }
 }

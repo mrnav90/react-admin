@@ -1,0 +1,87 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  background: $background-theme;
+}
+
+#app,
+.wrapper {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  position: relative;
+}
+
+.guest-page {
+  height: 100%;
+
+  .column {
+    margin-top: 100px;
+    max-width: 450px;
+
+    .ui.header {
+      font-family: Roboto;
+    }
+
+    .ui.segment {
+      padding: 40px;
+
+      .field {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .copy-right {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #2185d0;
+  }
+
+  .btn-submit {
+    background: #ed3237;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #fff;
+
+    &:hover {
+      background: #b60005;
+      color: #fff;
+    }
+  }
+
+  .forgot-password {
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+    color: #2185d0;
+  }
+}
+
+.page-not-found {
+  .column {
+    margin-top: 150px;
+    color: #767e89;
+
+    h1 {
+      font-size: 200px;
+      line-height: 100px;
+      height: 150px;
+    }
+
+    p {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    a {
+      font-size: 15px;
+      color: #ed3237;
+      text-decoration: underline;
+    }
+  }
+}
