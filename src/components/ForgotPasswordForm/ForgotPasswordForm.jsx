@@ -1,37 +1,51 @@
 import React, {Component} from 'react';
 import {CopyRight} from 'components';
-import PropTypes from 'prop-types';
+import {Button, Label, Grid, Header, Segment} from 'semantic-ui-react';
+import {Form} from 'formsy-semantic-ui-react';
 
-class ForgotPasswordForm extends Component {
+export default class ForgotPasswordForm extends Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      isSubmit: false
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(formData) {
+    this.setState({isSubmit: true});
   }
 
   render() {
+    const errorLabel = <Label color="red" pointing={true} basic={true} />;
     return (
       <div className="guest-page">
-        <div className="ui middle center aligned grid">
-          <div className="column">
-            <h1 className="ui header">
-              <div className="content">Forgot Password</div>
-            </h1>
-            <form className="ui large form">
-              <div className="ui segment">
-                <div className="field">
-                  <div className="ui large left icon input">
-                    <i className="at icon"></i>
-                    <input type="text" name="email" placeholder="E-mail address"/>
-                  </div>
-                </div>
-                <button className="ui fluid large btn-submit submit button">Send</button>
-              </div>
-            </form>
+        <Grid textAlign="center" verticalAlign="middle">
+          <Grid.Column>
+            <Header as="h1" textAlign="center">
+              Forgot Password
+            </Header>
+            <Form loading={this.state.isSubmit} size="large" onValidSubmit={this.onSubmit} noValidate>
+              <Segment textAlign="left">
+                <Form.Input
+                  fluid
+                  icon="at"
+                  size="large"
+                  name="email"
+                  iconPosition="left"
+                  placeholder="E-mail address"
+                  validations="isEmail"
+                  required
+                  passRequiredToField={false}
+                  validationErrors={{isEmail: 'Email not valid', isDefaultRequiredValue: 'Email is required'}}
+                  errorLabel={errorLabel}/>
+                <Button className="btn-submit" fluid size="large">Send</Button>
+              </Segment>
+            </Form>
             <CopyRight/>
-          </div>
-        </div>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }
 }
-
-export default ForgotPasswordForm;

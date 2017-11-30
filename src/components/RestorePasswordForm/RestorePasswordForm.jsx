@@ -1,43 +1,65 @@
 import React, {Component} from 'react';
 import {CopyRight} from 'components';
-import PropTypes from 'prop-types';
+import {Button, Label, Grid, Header, Segment} from 'semantic-ui-react';
+import {Form} from 'formsy-semantic-ui-react';
 
-class RestorePasswordForm extends Component {
+export default class RestorePasswordForm extends Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      isSubmit: false
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(formData) {
+    this.setState({isSubmit: true});
   }
 
   render() {
+    const errorLabel = <Label color="red" pointing={true} basic={true} />;
     return (
       <div className="guest-page">
-        <div className="ui middle center aligned grid">
-          <div className="column">
-            <h1 className="ui header">
-              <div className="content">Restore Password</div>
-            </h1>
-            <form className="ui large form">
-              <div className="ui segment">
-                <div className="field">
-                  <div className="ui large left icon input">
-                    <i className="lock icon"></i>
-                    <input type="password" name="password" placeholder="New password"/>
-                  </div>
-                </div>
-                <div className="field">
-                  <div className="ui large left icon input">
-                    <i className="lock icon"></i>
-                    <input type="password" name="confirm_password" placeholder="Confirm password"/>
-                  </div>
-                </div>
-                <button className="ui fluid large btn-submit submit button">Change password</button>
-              </div>
-            </form>
+        <Grid textAlign="center" verticalAlign="middle">
+          <Grid.Column>
+            <Header as="h1" textAlign="center">
+              Restore Password
+            </Header>
+            <Form loading={this.state.isSubmit} size="large" onValidSubmit={this.onSubmit} noValidate>
+              <Segment textAlign="left">
+                <Form.Input
+                  fluid
+                  type="password"
+                  icon="lock"
+                  size="large"
+                  name="password"
+                  iconPosition="left"
+                  placeholder="New password"
+                  validations="minLength:6"
+                  required
+                  passRequiredToField={false}
+                  validationErrors={{minLength: 'Password too short', isDefaultRequiredValue: 'Password is required'}}
+                  errorLabel={errorLabel}/>
+                <Form.Input
+                  fluid
+                  type="password"
+                  icon="lock"
+                  size="large"
+                  name="confirm_password"
+                  iconPosition="left"
+                  placeholder="Confirm password"
+                  validations="minLength:6,equalsField:password"
+                  required
+                  passRequiredToField={false}
+                  validationErrors={{equalsField: 'Password confirmation does not match', minLength: 'Password confirm too short', isDefaultRequiredValue: 'Password confirm is required'}}
+                  errorLabel={errorLabel}/>
+                <Button className="btn-submit" fluid size="large">Change password</Button>
+              </Segment>
+            </Form>
             <CopyRight/>
-          </div>
-        </div>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }
 }
-
-export default RestorePasswordForm;

@@ -5,6 +5,7 @@
     "transform-decorators-legacy",
     "transform-react-inline-elements",
     "transform-react-constant-elements",
-    "transform-react-jsx"
+    "transform-react-jsx",
+    "transform-class-properties"
   ]
 }

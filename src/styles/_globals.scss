@@ -30,7 +30,7 @@ body {
     .ui.segment {
       padding: 40px;
 
-      .field {
+      .field:not(.error) {
         margin-bottom: 30px;
       }
     }
@@ -50,6 +50,13 @@ body {
 
     &:hover {
       background: #b60005;
+      color: #fff;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+      background: #ed3237;
       color: #fff;
     }
   }

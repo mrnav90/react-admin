@@ -1,45 +1,66 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {CopyRight} from 'components';
 import {Link} from 'react-router-dom';
+import {Button, Grid, Label, Header, Segment} from 'semantic-ui-react';
+import {Form} from 'formsy-semantic-ui-react';
 
-class LoginForm extends Component {
+export default class LoginForm extends Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      isSubmit: false
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(formData) {
+    this.setState({isSubmit: true});
   }
 
   render() {
+    const errorLabel = <Label color="red" pointing={true} basic={true} />;
     return (
       <div className="guest-page">
-        <div className="ui middle center aligned grid">
-          <div className="column">
-            <h1 className="ui header">
-              <div className="content">Sign In</div>
-            </h1>
-            <form className="ui large form">
-              <div className="ui segment">
-                <div className="field">
-                  <div className="ui large left icon input">
-                    <i className="at icon"></i>
-                    <input type="text" name="email" placeholder="E-mail address"/>
-                  </div>
-                </div>
-                <div className="field">
-                  <div className="ui large left icon input">
-                    <i className="lock icon"></i>
-                    <input type="password" name="password" placeholder="Password"/>
-                  </div>
-                </div>
-                <button className="ui fluid large btn-submit submit button">Sign In</button>
+        <Grid textAlign="center" verticalAlign="middle">
+          <Grid.Column>
+            <Header as="h1" textAlign="center">
+              Sign In
+            </Header>
+            <Form loading={this.state.isSubmit} size="large" onValidSubmit={this.onSubmit} noValidate>
+              <Segment textAlign="left">
+                <Form.Input
+                  fluid
+                  icon="at"
+                  size="large"
+                  name="email"
+                  iconPosition="left"
+                  placeholder="E-mail address"
+                  validations="isEmail"
+                  required
+                  passRequiredToField={false}
+                  validationErrors={{isEmail: 'Email not valid', isDefaultRequiredValue: 'Email is required'}}
+                  errorLabel={errorLabel}/>
+                <Form.Input
+                  fluid
+                  type="password"
+                  icon="lock"
+                  size="large"
+                  name="password"
+                  iconPosition="left"
+                  placeholder="Password"
+                  validations="minLength:6"
+                  required
+                  passRequiredToField={false}
+                  validationErrors={{minLength: 'Password too short', isDefaultRequiredValue: 'Password is required'}}
+                  errorLabel={errorLabel}/>
+                <Button className="btn-submit" fluid size="large">Sign In</Button>
                 <Link to="/forgot-password" className="forgot-password">Forgot password?</Link>
-              </div>
-            </form>
+              </Segment>
+            </Form>
             <CopyRight/>
-          </div>
-        </div>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }
 }
-
-export default LoginForm;
