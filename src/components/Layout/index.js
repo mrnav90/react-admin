@@ -1,9 +1,6 @@
-import Header from './Master/Header';
-import Footer from './Master/Footer';
 import MasterLayout from './Master/MasterLayout';
+import './layout.scss';
 
 export {
-  Header,
-  Footer,
   MasterLayout
 };

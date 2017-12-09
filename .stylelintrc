@@ -3,7 +3,6 @@
   "rules": {
     "selector-pseudo-element-colon-notation": "single",
     "number-leading-zero": "never",
-    "declaration-empty-line-before": "never",
-    "max-nesting-depth": 4
+    "declaration-empty-line-before": "never"
   }
 }
